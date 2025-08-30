@@ -32,8 +32,8 @@
 // Select camera model - find more camera models in camera_pins.h file here
 // https://github.com/espressif/arduino-esp32/blob/master/libraries/ESP32/examples/Camera/CameraWebServer/camera_pins.h
 
-#define CAMERA_MODEL_ESP_EYE // Has PSRAM
-//#define CAMERA_MODEL_AI_THINKER // Has PSRAM
+//#define CAMERA_MODEL_ESP_EYE // Has PSRAM
+#define CAMERA_MODEL_AI_THINKER // Has PSRAM
 
 #if defined(CAMERA_MODEL_ESP_EYE)
 #define PWDN_GPIO_NUM -1
@@ -84,7 +84,7 @@
 #define EI_CAMERA_FRAME_BYTE_SIZE                 3
 
 /* Private variables ------------------------------------------------------- */
-static bool debug_nn = false; // Set this to true to see e.g. features generated from the raw signal
+static bool debug_nn = true; // Set this to true to see e.g. features generated from the raw signal
 static bool is_initialised = false;
 uint8_t *snapshot_buf; //points to the output of the capture
 
@@ -143,8 +143,8 @@ void setup()
         ei_printf("Camera initialized\r\n");
     }
 
-    ei_printf("\nStarting continious inference in 2 seconds...\n");
-    ei_sleep(2000);
+    ei_printf("\nStarting continious inference in 5 seconds...\n");
+    ei_sleep(5000);
 }
 static int ei_camera_get_data(size_t offset, size_t length, float *out_ptr)
 {
